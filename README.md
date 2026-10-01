@@ -13,7 +13,7 @@ An automated **Infrastructure as Code (IaC)** project built using **Ansible** to
 
 ## 📂 Project Structure
 ```text
-ansible-server-bootstrap/
+IaC-ansible-server
 ├── inventory/
 │   └── hosts.ini       # Defines target servers / hosts
 ├── playbook.yml        # Main automation tasks & handlers
