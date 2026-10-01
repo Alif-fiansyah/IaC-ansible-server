@@ -1,4 +1,4 @@
-# Iac-ansible-server
+# IaC-ansible-server
 
 An automated **Infrastructure as Code (IaC)** project built using **Ansible** to provision, configure, and secure Linux servers (optimized for **Arch Linux** & **Debian/Ubuntu**) effortlessly from a single control node.
 
