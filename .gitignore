@@ -1,0 +1,13 @@
+# Ansible temporary files & retry files
+*.retry
+.ansible/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# VS Code / Editor specific files
+.vscode/
+.idea/
+.DS_Store

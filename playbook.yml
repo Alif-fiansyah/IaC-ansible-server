@@ -1,0 +1,42 @@
+---
+- name: Automated Server Bootstrap & Hardening
+  hosts: servers
+  become: yes
+
+  tasks:
+    - name: 1. Install essential security and network tools (Arch Linux)
+      pacman:
+        name:
+          - ufw
+          - fail2ban
+          - curl
+          - git
+        state: present
+        update_cache: yes
+      when: ansible_os_family == "Archlinux"
+
+    - name: 2. Ensure UFW firewall service is enabled and running
+      systemd:
+        name: ufw
+        state: started
+        enabled: yes
+
+    - name: 3. Ensure Fail2Ban service is enabled and running
+      systemd:
+        name: fail2ban
+        state: started
+        enabled: yes
+
+    - name: 4. Secure SSH - Disable root login
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^#?PermitRootLogin'
+        line: 'PermitRootLogin no'
+        state: present
+      notify: Restart SSH
+
+  handlers:
+    - name: Restart SSH
+      systemd:
+        name: sshd
+        state: restarted
